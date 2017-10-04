@@ -1,9 +1,10 @@
 FROM debian:testing
 
-RUN mkdir -p /app/myapp
-WORKDIR /usr/myapp
+RUN mkdir -p /usr/app
 
-COPY run-loop.sh /usr/myapp
-RUN chmod 755 /usr/myapp/run-loop.sh
+COPY loop.sh /usr/app/
+RUN chmod 755 /usr/app/loop.sh
 
-CMD ["run-loop.sh"]
+WORKDIR /usr/app
+
+CMD ["/usr/app/loop.sh"]
